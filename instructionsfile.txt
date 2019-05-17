@@ -1,0 +1,146 @@
+//keep your ganache open everytime
+C:\Windows\System32>cd c:/
+
+c:\>cd contest
+
+c:\contest>truffle migrate --reset
+//This will deploy your project
+//Truffle is a world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.
+c:\contest>truffle console
+truffle(development)>
+(To exit, press ^C again or type .exit)
+truffle(development)> Contest.deployed().then(function(instance) { app = instance})
+undefined
+// here Contest is the contract
+truffle(development)> app.contestants(1)
+Result {
+  '0': <BN: 1>,
+  '1': 'Tom',
+  '2': <BN: 0>,
+  id: <BN: 1>,
+  name: 'Tom',
+  votecount: <BN: 0> }
+truffle(development)> app.contestants(2)
+Result {
+  '0': <BN: 2>,
+  '1': 'Jerry',
+  '2': <BN: 0>,
+  id: <BN: 2>,
+  name: 'Jerry',
+  votecount: <BN: 0> }
+
+
+ truffle(development)> app.contestants(1).then(function(c) { contestant = c })
+undefined
+truffle(development)> contestant
+Result {
+  '0': <BN: 1>,
+  '1': <BN: 1>,
+  '2': <BN: 0>,
+  id: <BN: 1>,
+  name: <BN: 1>,
+  votecount: <BN: 0> }
+truffle(development)> contestant[1].toNumber()
+1
+//toNumber() is used to show in human readable form
+----------
+
+web3.eth
+// Lists all the functionalties of web3 for etherum
+
+truffle(development)> web3.eth.getAccounts()
+[ '0x46d5d98cCE2853c5779f115388bf35d8F6980944',
+  '0xfD8f3270E886DF3f7c60B9d1C06e383d1Fb94cf6',
+  '0xefD2a0d02FC8751788Dd6955cEADbB38A3820aB1',
+  '0xFe3587BB2df13cAB91e26d871d7ADA866bFff1DB',
+  '0x1E95d9229da7e81DC213D20F57f7d9ae46072Be5',
+  '0x61Ae77c1963C1af86E84B262586583925D5E58Bf',
+  '0x5484d6458fBC3C91126a3963ca62c78481Cc8eCC',
+  '0x7927e35c6De5c7F57d7Fe3ab9c61d1a7Fa79597e',
+  '0x1B8ADD77ed14b6f2e1392cb01dF752cd3CE1ea76',
+  '0xd73B14f3e7dea463245B13E461c3734B3bdE2cA0' ]
+//These are the accounts which I have in my Ganacahe
+//Ganache is a personal blockchain for Ethereum development you can use to deploy contracts, develop your applications, and run tests. It is available as both a desktop application as well as a command-line tool 
+truffle(development)> web3.eth.getAccounts().then(function(acc) {accounts=acc })
+undefined
+truffle(development)> accounts[0];
+'0x46d5d98cCE2853c5779f115388bf35d8F6980944'
+truffle(development)> accounts[1]
+'0xfD8f3270E886DF3f7c60B9d1C06e383d1Fb94cf6'
+//This is the way to access access my accounts seperately in Ganache
+
+
+
+
+npm run dev
+// to run the lite server which will automatically display the html index page
+//open one more command prompt anf follow the operations
+
+------------------
+
+C:\Windows\System32>cd c:/
+
+c:\>cd contest
+
+c:\contest>truffle migrate --reset
+//This will deploy your project
+c:\contest>truffle console
+truffle(development)> Contest.deployed().then(function(instance) {app=instanace})
+ReferenceError: instanace is not defined
+truffle(development)> Contest.deployed().then(function(instance) {app=instance})
+undefined
+truffle(development)> web3.eth.getAccounts().then(function(acc) {accounts=acc})
+undefined
+truffle(development)> app.vote(1,{from:accounts[1]})
+//the meaning is vote for 1st conestant(i.e tom here) from account 1
+{ tx:
+   '0x0d7f710ca21c4c988f26c82e224733dfea731d3f308fc3408501e7177d1d7d7a',
+  receipt:
+   { transactionHash:
+      '0x0d7f710ca21c4c988f26c82e224733dfea731d3f308fc3408501e7177d1d7d7a',
+     transactionIndex: 0,
+     blockHash:
+      '0xc4d56308cf4ab565ab1f027d48d2f923c337aea05796770df33b549fa4a39f00',
+     blockNumber: 9,
+     from: '0xfd8f3270e886df3f7c60b9d1c06e383d1fb94cf6',
+     to: '0xbae5cad651e6acf845215d9221a736759f3f435c',
+     gasUsed: 64127,
+     cumulativeGasUsed: 64127,
+     contractAddress: null,
+     logs: [ [Object] ],
+     status: true,
+     logsBloom:
+      '0x00000000000000000000000000000000000000000000000000000008000010000000000000000000000000000000008000000000000000000000000400040000000000004000000002000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000',
+     v: '0x1b',
+     r:
+      '0x537b70a4c53b13b1d20ce8dc2f6f511023372d0c232de23b9525c5941ac54b5b',
+     s:
+      '0x21606dac5d30c8b1d4f55f3e6df501eda972d39c10680b1e6551b9145f73191f',
+     rawLogs: [ [Object] ] },
+  logs:
+   [ { logIndex: 0,
+       transactionIndex: 0,
+       transactionHash:
+        '0x0d7f710ca21c4c988f26c82e224733dfea731d3f308fc3408501e7177d1d7d7a',
+       blockHash:
+        '0xc4d56308cf4ab565ab1f027d48d2f923c337aea05796770df33b549fa4a39f00',
+       blockNumber: 9,
+       address: '0xbAe5caD651E6ACF845215d9221a736759f3f435C',
+       type: 'mined',
+       id: 'log_dd321331',
+       event: 'votedEvent',
+       args: [Result] } ] }
+truffle(development)> app.vote(1,{from:accounts[1]})
+// If I try to do this again it wil revert back
+Error: Returned error: VM Exception while processing transaction: revert
+    at XMLHttpRequest._onHttpResponseEnd (C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\~\xhr2-cookies\dist\xml-http-request.js:318:1)
+    at XMLHttpRequest._setReadyState (C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\~\xhr2-cookies\dist\xml-http-request.js:208:1)
+    at XMLHttpRequestEventTarget.dispatchEvent (C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\~\xhr2-cookies\dist\xml-http-request-event-target.js:34:1)
+    at XMLHttpRequest.request.onreadystatechange (C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\~\web3\~\web3-providers-http\src\index.js:96:1)
+    at C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\packages\truffle-provider\wrapper.js:112:1
+    at C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\~\web3-eth\~\web3-core-requestmanager\src\index.js:140:1
+    at Object.ErrorResponse (C:\Users\U6077643\AppData\Roaming\npm\node_modules\truffle\build\webpack:\~\web3-eth\~\web3-core-helpers\src\errors.js:29:1)
+
+truffle(development)> app.vote(10,{from:accounts[1]})
+//If i try to do for 10th contestant it wil laslo revert back as there are only 2 contestants
+// Again if we refresh the web page it will show the updated votes
